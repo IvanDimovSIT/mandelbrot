@@ -2,7 +2,7 @@ const MAX_ITERATIONS = 1000;
 const WIDTH = window.innerWidth;
 const HEIGHT = window.innerHeight;
 const TIME_BETWEEN_FRAMES_MS = 20;
-const ZOOM_PER_FRAME = 20;
+const ZOOM_PER_FRAME = 2;
 const ZOOM_X = 0.518;
 const ZOOM_Y = 0.59;
 
@@ -78,7 +78,7 @@ async function main()
     canvas.width = WIDTH;
     canvas.height = HEIGHT;
 
-    for(let i=1; true; i+= ZOOM_PER_FRAME){
+    for(let i=1; true; i *= ZOOM_PER_FRAME){
         drawMandelbrot(ctx, i, ZOOM_X*WIDTH, ZOOM_Y*HEIGHT);
         await new Promise(resolve => setTimeout(resolve, TIME_BETWEEN_FRAMES_MS));
     }
